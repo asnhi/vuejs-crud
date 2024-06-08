@@ -1,12 +1,22 @@
 const admin = [
   {
     path: '/admin',
-    component: () => import('@/layouts/TheAdmin.vue'), // Đảm bảo đường dẫn chính xác và tên tệp chính xác
+    component: () => import('@/layouts/TheAdmin.vue'),
     children: [
       {
-        path: 'user',
+        path: 'users',
         name: 'admin-user',
-        component: () => import('@/views/admin/user/TheIndex.vue') // Đảm bảo đường dẫn chính xác và tên tệp chính xác
+        component: () => import('@/views/admin/users/TheIndex.vue')
+      },
+      {
+        path: 'roles',
+        name: 'admin-role',
+        component: () => import('@/views/admin/roles/TheIndex.vue')
+      },
+      {
+        path: 'settings',
+        name: 'admin-setting',
+        component: () => import('@/views/admin/settings/TheIndex.vue')
       }
     ]
   }

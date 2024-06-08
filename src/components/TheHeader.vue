@@ -1,8 +1,8 @@
 <template>
   <div class="container-fluid">
-    <div class="row text-white" style="background-color: #1e2022; padding: 1rem">
+    <div class="row text-white" style="background-color: #27374D; padding: 1rem">
       <div class="col-1 d-flex d-sm-none align-items-center justify-content-center">
-        <span @click="toggleDrawer('Danh Mục')">X</span>
+        <span @click="toggleDrawer('Danh Mục', 'left')"> <MenuOutlined /></span>
       </div>
 
       <div
@@ -23,7 +23,7 @@
       </div>
 
       <div class="col-1 d-flex d-sm-none align-items-center justify-content-center">
-        <span @click="toggleDrawer('User')">X</span>
+        <span @click="toggleDrawer('User', 'right')"><UserSwitchOutlined /></span>
       </div>
     </div>
   </div>
@@ -32,29 +32,47 @@
     :visible="drawerVisible"
     @close="closeDrawer"
     :title="drawerTitle"
-    :placement="drawerPlacement" 
+    :placement="drawerPlacement"
   >
-    <p>Some contents...</p>
-    <p>Some contents...</p>
-    <p>Some contents...</p>
+    <TheSidebarMenu />
   </a-drawer>
-  
 </template>
 
-<script setup>
-import { ref } from 'vue';
+<script>
+import TheSidebarMenu from '@/components/TheSidebarMenu.vue'
+import { MenuOutlined, UserSwitchOutlined } from '@ant-design/icons-vue'
 
-const drawerVisible = ref(false);
-const drawerTitle = ref('');
-const drawerPlacement = ref('left'); // Khởi tạo placement mặc định là 'left'
+import { defineComponent, ref } from 'vue'
 
-const toggleDrawer = (title) => {
-  drawerVisible.value = true;
-  drawerTitle.value = title;
+export default defineComponent({
+  components: {
+    TheSidebarMenu,
+    MenuOutlined,
+    UserSwitchOutlined
+  },
 
-};
+  setup() {
+    const drawerVisible = ref(false)
+    const drawerTitle = ref('')
+    const drawerPlacement = ref('')
 
-const closeDrawer = () => {
-  drawerVisible.value = false;
-};
+    const toggleDrawer = (title, placement) => {
+      drawerTitle.value = title
+      drawerPlacement.value = placement
+      drawerVisible.value = true
+    }
+
+    const closeDrawer = () => {
+      drawerVisible.value = false
+    }
+
+    return {
+      drawerVisible,
+      drawerTitle,
+      drawerPlacement,
+      toggleDrawer,
+      closeDrawer
+    }
+  }
+})
 </script>
