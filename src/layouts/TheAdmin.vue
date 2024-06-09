@@ -2,9 +2,9 @@
   <TheHeader />
 
   <div class="container-fluid mt-3">
-    <div class="row">
+    <div class="row d-flex align-items-start">
       <div class="col-sm-3 d-none d-sm-flex">
-        <a-list bordered style="width: 100%; background-color: #F0F5F9">
+        <a-list bordered style="width: 100%; background-color: #f0f5f9">
           <TheSidebarMenu />
           <!-- <template #header>
             <div style="font-weight: bold;">BẢNG ĐIỀU KHIỂN</div>
@@ -30,10 +30,3 @@ export default {
   }
 }
 </script>
-
-<style>
-.bordered-list {
-  border: 2px solid #27374D;
-  border-radius: 8px;
-}
-</style>
